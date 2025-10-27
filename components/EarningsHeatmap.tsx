@@ -105,13 +105,13 @@ export const EarningsHeatmap: React.FC<EarningsHeatmapProps> = ({ trips, isLoadi
   const heatmapRef = useRef<any>(null); // To store heatmap instance
 
   useEffect(() => {
-    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Use window.google to access the global variable.
-    if (!mapRef.current || typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
+    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Cast to 'any' to avoid TypeScript error.
+    if (!mapRef.current || typeof (window as any).google === 'undefined' || typeof (window as any).google.maps === 'undefined') {
       return;
     }
 
-    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Use window.google to access the global variable.
-    const map = new window.google.maps.Map(mapRef.current, {
+    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Cast to 'any' to avoid TypeScript error.
+    const map = new (window as any).google.maps.Map(mapRef.current, {
       center: { lat: 52.237049, lng: 21.017532 }, // Center of Poland
       zoom: 6,
       styles: mapStyles,
@@ -122,8 +122,8 @@ export const EarningsHeatmap: React.FC<EarningsHeatmapProps> = ({ trips, isLoadi
     const heatmapData = trips
       .filter(trip => trip.lat && trip.lng)
       .map(trip => ({
-        // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Use window.google to access the global variable.
-        location: new window.google.maps.LatLng(trip.lat!, trip.lng!),
+        // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Cast to 'any' to avoid TypeScript error.
+        location: new (window as any).google.maps.LatLng(trip.lat!, trip.lng!),
         weight: trip.fare,
       }));
 
@@ -131,8 +131,8 @@ export const EarningsHeatmap: React.FC<EarningsHeatmapProps> = ({ trips, isLoadi
         heatmapRef.current.setMap(null);
     }
     
-    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Use window.google to access the global variable.
-    heatmapRef.current = new window.google.maps.visualization.HeatmapLayer({
+    // FIX: Property 'google' does not exist on type 'Window & typeof globalThis'. Cast to 'any' to avoid TypeScript error.
+    heatmapRef.current = new (window as any).google.maps.visualization.HeatmapLayer({
       data: heatmapData,
       map: map,
     });

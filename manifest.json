@@ -1,0 +1,17 @@
+{
+  "name": "Taxi Profit",
+  "short_name": "Taxi Profit",
+  "description": "Profesjonalna aplikacja do śledzenia kursów, kosztów i zysków dla kierowców aplikacji Bolt i Uber, wzbogacona o analizę rentowności i wskazówki AI.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#10B981",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
