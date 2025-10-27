@@ -1,0 +1,7 @@
+{
+  "name": "Taxi Profit",
+  "description": "Profesjonalna aplikacja do śledzenia kursów, kosztów i zysków dla kierowców aplikacji Bolt i Uber, wzbogacona o analizę rentowności i wskazówki AI.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
